@@ -9,8 +9,8 @@ import javax.persistence.Id;
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	Integer id;
 	String name;
 	String email;
 	String password;
