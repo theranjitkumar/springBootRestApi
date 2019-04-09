@@ -21,6 +21,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
+	// =========1========
 	@Autowired
 	private UserDetailsService userDetailsService;
 	
@@ -32,36 +33,40 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return provider;
 	}
 	
-	// =========1========
-//	@Bean
-//	@Override
-//	protected UserDetailsService userDetailsService() {
-//		List<UserDetails> users = new ArrayList<>();
-//		users.add(User.withDefaultPasswordEncoder().username("test").password("test").roles("USER").build());
-//		return new InMemoryUserDetailsManager(users);
-//	}
-	// ========2=========
-//	@Override
-//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//	    auth.inMemoryAuthentication()
-//	        .withUser("admin").password("admin").roles("ADMIN")
-//	        .and()
-//	        .withUser("user").password("user").roles("USER");
-//	}
-//	 
-//	@Override
-//	protected void configure(HttpSecurity http) throws Exception {
-//		http
-//			.authorizeRequests()
-//			.antMatchers("/").permitAll()
-//			.antMatchers("/api*").hasRole("USER")
-////			.anyRequest()
-////			.fullyAuthenticated()
-////			.permitAll()
-//			.and()
-//			.httpBasic();
-//		http.csrf().disable();
-//	}
-//
-//	
+	// =========2========
+	// @Bean
+	// @Override
+	// protected UserDetailsService userDetailsService() {
+	// 	List<UserDetails> users = new ArrayList<>();
+	// 	users.add(User.withDefaultPasswordEncoder().username("test").password("test").roles("USER").build());
+	// 	return new InMemoryUserDetailsManager(users);
+	// }
+	// ========3=========
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+	    auth.inMemoryAuthentication()
+	        .withUser("admin").password("admin").roles("ADMIN")
+	        .and()
+	        .withUser("user").password("user").roles("USER");
+	}
+	 
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.headers().frameOptions().disable();
+
+		http
+			.authorizeRequests()
+			.antMatchers("/h2-console/**").permitAll();
+		http
+			.authorizeRequests()
+			.mvcMatchers("/api/**").hasRole("USER")
+			.anyRequest()
+			.fullyAuthenticated()
+			.and()
+			.httpBasic();
+
+		http.csrf().disable();
+	}
+
+	
 }

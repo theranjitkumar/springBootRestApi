@@ -29,7 +29,9 @@ public class UserController {
 	@PostMapping("/users")
 	public User addUser(@RequestParam String username) {
 		User u = new User();
-		u.setUsername(username);
+		u.setEmail("test@email.com");
+		u.setUsername("test");
+		u.setPassword("test");
 		return userRepository.save(u);
 	}
 

@@ -1,3 +1,8 @@
---CREATE SCHEMA IF NOT EXISTS `springapp` DEFAULT CHARACTER SET utf8 ;
-insert into user values(101, "test@email.com", "test", "test" );
+-- Insert Query:
+-- ===========================================
+-- INSERT INTO user 
+-- VALUES ('test@email.com', 'test', 'test' );
+
+-- Select Query:
+-- ===========================================
 select * from user;
