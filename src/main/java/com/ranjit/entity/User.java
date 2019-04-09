@@ -10,25 +10,25 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int id;
-	String name;
-	String email;
-	String password;
+	private Long id;
+	private String username;
+	private String email;
+	private String password;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.id = (long) id;
 	}
 
-	public String getName() {
-		return name;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getEmail() {
@@ -49,7 +49,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + "]";
+		return "User [id=" + id + ", name=" + username + ", email=" + email + ", password=" + password + "]";
 	}
 
 }

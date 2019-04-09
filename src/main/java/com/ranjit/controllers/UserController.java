@@ -31,9 +31,9 @@ public class UserController {
 	}
 
 	@PostMapping("/users")
-	public User addUser(@RequestParam String name) {
+	public User addUser(@RequestParam String username) {
 		User u = new User();
-		u.setName(name);
+		u.setUsername(username);
 		return userRepository.save(u);
 	}
 
