@@ -23,6 +23,6 @@
 	insert into user values(101, "test@email.com", "test", "test" );
 
 ###	maven cmd
-	To run: 	./mvnw spring-boot:run
+	To run:     ./mvnw spring-boot:run
 	To clean:   ./mvnw clean
 	To package: ./mvnw clean package
