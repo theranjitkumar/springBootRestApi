@@ -42,31 +42,38 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	// 	return new InMemoryUserDetailsManager(users);
 	// }
 	// ========3=========
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-	    auth.inMemoryAuthentication()
-	        .withUser("admin").password("admin").roles("ADMIN")
-	        .and()
-	        .withUser("user").password("user").roles("USER");
-	}
+	// @Override
+	// protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+	//     auth.inMemoryAuthentication()
+	//         // .withUser("admin").password("admin").roles("ADMIN")
+	//         // .and()
+	//         .withUser("test").password("test").roles("USER");
+	// }
 	 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.headers().frameOptions().disable();
+	// @Override
+	// protected void configure(HttpSecurity http) throws Exception {
+		
+	// 	http
+	// 		.authorizeRequests().antMatchers("/").permitAll()
+	// 		.and()
+	// 		.authorizeRequests().antMatchers("/h2-console/**").permitAll()
+	// 		.and()
+	// 		.authorizeRequests().antMatchers("/api/**").permitAll()
+	// 		.and()
+	// 		.authorizeRequests().antMatchers("/login").permitAll()
+	// 		;
 
-		http
-			.authorizeRequests()
-			.antMatchers("/h2-console/**").permitAll();
-		http
-			.authorizeRequests()
-			.mvcMatchers("/api/**").hasRole("USER")
-			.anyRequest()
-			.fullyAuthenticated()
-			.and()
-			.httpBasic();
+	// 	http
+	// 		.authorizeRequests()
+	// 		.mvcMatchers("/home").hasRole("USER")
+	// 		.anyRequest()
+	// 		.fullyAuthenticated()
+	// 		.and()
+	// 		.httpBasic();
 
-		http.csrf().disable();
-	}
+	// 	http.csrf().disable();
+	// 	http.headers().frameOptions().disable();
+	// }
 
 	
 }
