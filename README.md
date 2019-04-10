@@ -6,7 +6,7 @@
 To manage  inmemory sql database
 
 ### api's:
-api url: <a href="/api/users">/api/users</a>
+api url: <a href="https://springmvc-app-ranjit.herokuapp.com/api/users">/api/users</a>
 
 ### create user to login:
 
