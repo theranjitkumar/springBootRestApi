@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.ranjit.entity.User;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends CrudRepository<User, Long> {
 
 	User findByUsername(String username);
 	

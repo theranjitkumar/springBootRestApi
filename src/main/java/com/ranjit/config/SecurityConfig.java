@@ -63,17 +63,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.logout().invalidateHttpSession(true)
 			.clearAuthentication(true)
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-			.logoutSuccessUrl("/login").permitAll();
+			.logoutSuccessUrl("/login").permitAll()
+			.and()
+			.authorizeRequests()
+			.antMatchers("/api/**").hasRole("USER")
+			.anyRequest().permitAll();
 			
-
-//			.and()
-//			.authorizeRequests().antMatchers("/").permitAll()
-//			.and()
+			// and()
 //			.authorizeRequests().antMatchers("/h2-console/**").permitAll()
 //			.and()
 //			.authorizeRequests().antMatchers("/api/**").permitAll()
-//			.and()
-//			.authorizeRequests().antMatchers("/login").permitAll();
 
 //		http
 //			.authorizeRequests()

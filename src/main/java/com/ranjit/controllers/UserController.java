@@ -33,7 +33,7 @@ public class UserController {
 	@GetMapping("/users")
 	public ModelAndView getUsers(ModelAndView mv) {
 
-//		return (List<User>) userRepository.findAll();
+	// return (List<User>) userRepository.findAll();
 		List<User> users = new ArrayList<>();
 		users = (List<User>) userRepo.findAll();
 		mv.addObject("users", users);

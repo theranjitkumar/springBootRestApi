@@ -19,14 +19,13 @@ public class UserRestController {
 	UserRepository userRepository;
 
 	@PostMapping("/users")
-	public User addUser(@RequestParam String username) {
+	public User addUser(@RequestParam String email, @RequestParam String username, @RequestParam String password) {
 		User u = new User();
-		u.setEmail("test@email.com");
-		u.setUsername("test");
-		u.setPassword("test");
+		u.setEmail(email);
+		u.setUsername(username);
+		u.setPassword(password);
 		return userRepository.save(u);
 	}
-
 
 	@RequestMapping("/users")
 	public List<User> getUsers() {
