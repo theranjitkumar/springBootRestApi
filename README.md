@@ -1,11 +1,12 @@
-# spring Boot Rest Api
+# spring Boot Web App 
+	<a href="https://springmvc-app-ranjit.herokuapp.com/">Go live</a>
 
-###	h2db url: http://localhost:8080/h2
-###	api url: http://localhost:8080/api/users
-
-### got to http://localhost:8080/h2-console/
+### got to /h2-console/
 
 	To manage  inmemory sql database
+
+### api's:
+	api url: <a href="/api/users">/api/users</a>
 
 ### create user to login:
 
