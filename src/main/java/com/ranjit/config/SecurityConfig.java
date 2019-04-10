@@ -1,21 +1,17 @@
 package com.ranjit.config;
 
-import java.util.*;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -29,6 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public AuthenticationProvider authProvider() {
 		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
 		provider.setUserDetailsService(userDetailsService);
+		// provider.setPasswordEncoder(new BCryptPasswordEncoder()); // if password is saved incrypted
 		provider.setPasswordEncoder(NoOpPasswordEncoder.getInstance());
 		return provider;
 	}
@@ -50,30 +47,45 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	//         .withUser("test").password("test").roles("USER");
 	// }
 	 
-	// @Override
-	// protected void configure(HttpSecurity http) throws Exception {
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
 		
-	// 	http
-	// 		.authorizeRequests().antMatchers("/").permitAll()
-	// 		.and()
-	// 		.authorizeRequests().antMatchers("/h2-console/**").permitAll()
-	// 		.and()
-	// 		.authorizeRequests().antMatchers("/api/**").permitAll()
-	// 		.and()
-	// 		.authorizeRequests().antMatchers("/login").permitAll()
-	// 		;
+		http.headers().frameOptions().disable(); // to enable h2db view
+		
+		http.csrf().disable();
+		
+		http
+			.authorizeRequests().antMatchers("/login").permitAll()
+			.anyRequest().authenticated()
+			.and()
+			.formLogin().loginPage("/login").permitAll()
+			.and()
+			.logout().invalidateHttpSession(true)
+			.clearAuthentication(true)
+			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+			.logoutSuccessUrl("/login").permitAll();
+			
 
-	// 	http
-	// 		.authorizeRequests()
-	// 		.mvcMatchers("/home").hasRole("USER")
-	// 		.anyRequest()
-	// 		.fullyAuthenticated()
-	// 		.and()
-	// 		.httpBasic();
+//			.and()
+//			.authorizeRequests().antMatchers("/").permitAll()
+//			.and()
+//			.authorizeRequests().antMatchers("/h2-console/**").permitAll()
+//			.and()
+//			.authorizeRequests().antMatchers("/api/**").permitAll()
+//			.and()
+//			.authorizeRequests().antMatchers("/login").permitAll();
 
-	// 	http.csrf().disable();
-	// 	http.headers().frameOptions().disable();
-	// }
+//		http
+//			.authorizeRequests()
+//			.mvcMatchers("/home").hasRole("USER")
+//			.anyRequest()
+//			.fullyAuthenticated()
+//			.and()
+//			.httpBasic();
+
+		
+		
+	}
 
 	
 }
