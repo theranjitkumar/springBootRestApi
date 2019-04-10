@@ -1,7 +1,8 @@
 -- Insert Query:
 -- ===========================================
-INSERT INTO USER VALUES(1, 'test@email.com','test','test');
-INSERT INTO USER VALUES(2, 'test1@email.com','test1','test1');
+INSERT INTO USER VALUES(1, 'admin@email.com','admin','admin');
+INSERT INTO USER VALUES(2, 'user@email.com','user','user');
+INSERT INTO USER VALUES(3, 'test@email.com','test','test');
 
 -- Select Query:
 -- ===========================================

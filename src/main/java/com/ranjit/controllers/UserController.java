@@ -1,45 +1,45 @@
 package com.ranjit.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ranjit.entity.User;
 import com.ranjit.repository.UserRepository;
 
-@RestController
-@RequestMapping("/api")
+@Controller
 public class UserController {
 
 	@Autowired
-	UserRepository userRepository;
+	UserRepository userRepo;
 
 	@PostMapping("/users")
-	public User addUser(@RequestParam String username) {
+	public ModelAndView addUser(ModelAndView mv, @RequestParam String email, @RequestParam String username, @RequestParam String password) {
 		User u = new User();
-		u.setEmail("test@email.com");
-		u.setUsername("test");
-		u.setPassword("test");
-		return userRepository.save(u);
+		u.setEmail(email);
+		u.setUsername(username);
+		u.setPassword(password);
+		userRepo.save(u);
+		mv.setViewName("users");
+		return mv;
 	}
 
+	@GetMapping("/users")
+	public ModelAndView getUsers(ModelAndView mv) {
 
-	@RequestMapping("/users")
-	public List<User> getUsers() {
+//		return (List<User>) userRepository.findAll();
+		List<User> users = new ArrayList<>();
+		users = (List<User>) userRepo.findAll();
+		mv.addObject("users", users);
 
-		return (List<User>) userRepository.findAll();
+		mv.setViewName("users");
+		return mv;
 	}
 
 }

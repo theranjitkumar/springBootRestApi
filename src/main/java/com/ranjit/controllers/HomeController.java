@@ -8,25 +8,25 @@ public class HomeController {
 
 	@GetMapping("/")
 	public String home() {
-		return "home.jsp";
+		return "home";
 	}
 
 	@GetMapping("/about")
 	public String about() {
-		return "about.jsp";
+		return "about";
 	}
 
 	@GetMapping("/contactus")
 	public String contactus() {
-		return "contactus.jsp";
+		return "contactus";
 	}
 	
 	@GetMapping("/login")
 	public String login() {
-		return "login.jsp";
+		return "login";
 	}
 	@GetMapping("/logout")
 	public String logout() {
-		return "login.jsp";
+		return "login";
 	}
 }
