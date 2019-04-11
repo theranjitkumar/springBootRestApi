@@ -14,19 +14,23 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 
-	public List<User> getAllUsers() {
-		return userRepository.findAll();
-	}
-
 	public void saveUser(User user) {
 		userRepository.save(user);
-	}
-
-	public Optional<User> getUser(Long id) {
-		return userRepository.findById(id);
 	}
 
 	public void deleteUser(Long id) {
 		userRepository.deleteById(id);
 	}
+
+	public List<User> getAllUsers() {
+		return userRepository.findAll();
+	}
+
+	public Optional<User> getUser(Long id) {
+		return userRepository.findById(id);
+	}
+	public User getUserBYId(Long id) {
+		return userRepository.getOne(id);
+	}
+
 }

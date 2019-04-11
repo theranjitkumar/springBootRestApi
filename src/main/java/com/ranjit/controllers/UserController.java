@@ -24,7 +24,7 @@ public class UserController {
 	private UserService userService;
 
 	@PostMapping("/users")
-	public ModelAndView addUser(ModelAndView mv, @RequestParam String email, @RequestParam String username,
+	public String addUser(ModelAndView mv, @RequestParam String email, @RequestParam String username,
 			@RequestParam String password) {
 		User user = new User();
 		user.setEmail(email);
@@ -33,7 +33,7 @@ public class UserController {
 		userService.saveUser(user);
 
 		mv.setViewName("users");
-		return mv;
+		return "redirect:/users";
 	}
 
 	@GetMapping("/users")

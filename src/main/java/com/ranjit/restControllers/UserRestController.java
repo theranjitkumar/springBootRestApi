@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,11 +35,18 @@ public class UserRestController {
 		return "user saved";
 	}
 
-//	@RequestMapping(value = "/users/{id}", method = RequestMethod.PUT)
-//	public String updateUser(@PathVariable(value = "id") Long id) {
-//		userService.deleteUser(id);
-//		return "Updadte sucess";
-//	}
+	@RequestMapping(value = "/users/{id}", method = RequestMethod.PUT)
+	public String updateUser(@PathVariable(value = "id") Long id, @RequestParam String email,
+			@RequestParam String username, @RequestParam String password) {
+
+		User user = userService.getUserBYId(id);
+
+		user.setEmail(email);
+		user.setUsername(username);
+		user.setPassword(password);
+		userService.saveUser(user);
+		return "Updadte sucess";
+	}
 
 	@RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE)
 	public String deleteUser(@PathVariable(value = "id") Long id) {
