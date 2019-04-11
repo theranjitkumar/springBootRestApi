@@ -1,7 +1,9 @@
 # spring Boot Web App 
 <a href="https://springmvc-app-ranjit.herokuapp.com/">Go live</a>
 
-### got to /h2-console/
+### got to h2-console:
+
+<a href="https://springmvc-app-ranjit.herokuapp.com/h2-console/"> h2-console </a>
 
 To manage  inmemory sql database
 
