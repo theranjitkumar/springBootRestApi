@@ -59,8 +59,11 @@
 				</div>
 
 				<!-- Test markups -->
-				<div id="app">
-					{{ message }}
+				<div id="app"> {{data}} </div>
+				<div id="app-7">
+					<ol>
+						<todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id"></todo-item>
+					</ol>
 				</div>
 				<!-- Test markups end -->
 			</div>
@@ -68,9 +71,38 @@
 	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-	<script src="/assets/js/script.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<!-- <script src="/assets/js/script.js"></script> -->
 	<script>
-	
+		Vue.component('todo-item', {
+			props: ['todo'],
+			template: '<li>{{ todo.text }}</li>'
+		})
+
+		new Vue({
+			el: '#app',
+			data() {
+				return {
+					data: null
+				}
+			},
+			mounted() {
+				axios
+					.get('https://springmvc-app-ranjit.herokuapp.com/api/users')
+					.then(response => (this.data = response))
+			}
+		})
+
+		// var app7 = new Vue({
+		// 	el: '#app-7',
+		// 	data: {
+		// 		groceryList: [
+		// 			{ id: 0, text: 'Vegetables' },
+		// 			{ id: 1, text: 'Cheese' },
+		// 			{ id: 2, text: 'Whatever else humans are supposed to eat' }
+		// 		]
+		// 	}
+		// })
 	</script>
 </body>
 
