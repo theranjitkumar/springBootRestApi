@@ -1,12 +1,63 @@
-<header>
-	<nav class="mainMenu">
-		<ul>
-			<li> <a href="./">Home</a> </li>
-			<li> <a href="./about">About</a> </li>
-			<li> <a href="./contactus">Contactus</a> </li>
-			<li> <a href="./users">Users</a> </li>
-			<li> <a href="./api/users">Users api</a> </li>
-			<li> <a href="./logout">Logout</a> </li>
-		</ul>
-	</nav>
-</header>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Home</title>
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="./">Blog</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item"> <a class="nav-link" href="./">Home</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="./about">About</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="./contactus">Contactus</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="./users">Users</a> </li>
+					<li class="nav-item"> <a class="nav-link" href="./api/users">Users api</a> </li>
+				</ul>
+				<div class="form-inline">
+					<a class="nav-link" href="./logout">Logout</a>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<br>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit ipsam necessitatibus, atque
+					perferendis enim
+					magnam illum exercitationem omnis animi totam minus dolor alias consectetur aliquam! Impedit
+					assumenda vel
+					sapiente iusto!</p>
+
+				<!-- Test markups -->
+				<div id="app">
+					{{ message }}
+				</div>
+				<!-- Test markups end -->
+			</div>
+		</div>
+	</div>
+
+	<!-- <div th:insert="./fragments/footer :: copy">...</div> -->
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="/js/script.js"></script>
+
+</body>
+
+</html>

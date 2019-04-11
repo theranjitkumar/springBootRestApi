@@ -1,8 +1,96 @@
-<h3> login </h3>
-<form action="login" method="POST">
+<!DOCTYPE html>
+<html lang="en">
 
-	user name <input type="text" name="username" value="">
-	password <input type="text" name="password" value="">
-	<input name="submit" type="submit" value="submit">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>About</title>
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/style.css">
+</head>
 
-</form>
+<body>
+
+	<!-- <br>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<h3> LogIn </h3>
+				<form action="login" method="POST">
+					user name <input type="text" name="username" value="" autocomplete="off">
+					password <input type="text" name="password" value="" autocomplete="off">
+					<input name="submit" type="submit" value="submit">
+				</form>
+				
+			</div>
+		</div>
+	</div> -->
+
+
+	<div class="container py-5">
+		<div class="row">
+			<div class="col-md-12">
+				<h2 class="text-center text-white mb-4">Bootstrap 4 Login Form</h2>
+				<div class="row">
+					<div class="col-md-6 mx-auto">
+
+						<!-- form card login -->
+						<div class="card rounded-0">
+							<div class="card-header">
+								<h3 class="mb-0">Login</h3>
+							</div>
+							<div class="card-body">
+								<form class="form" role="form" autocomplete="off" id="formLogin" action="login"
+									method="POST">
+									<div class="form-group">
+										<label for="uname1">Username</label>
+										<input type="text" class="form-control form-control-lg rounded-0"
+											name="username" required="">
+										<div class="invalid-feedback">Oops, you missed this one.</div>
+									</div>
+									<div class="form-group">
+										<label>Password</label>
+										<input type="password" class="form-control form-control-lg rounded-0"
+											name="password" required="" autocomplete="new-password">
+										<div class="invalid-feedback">Enter your password too!</div>
+									</div>
+									<div>
+										<label class="custom-control custom-checkbox">
+											<span class="custom-control-description small text-dark">Login as a test
+												user : user name = test, password = test</span>
+										</label>
+									</div>
+									<button type="submit" class="btn btn-success btn-lg float-right"
+										id="btnLogin">Login</button>
+								</form>
+							</div>
+							<!--/card-block-->
+						</div>
+						<!-- /form card login -->
+
+					</div>
+
+
+				</div>
+				<!--/row-->
+
+			</div>
+			<!--/col-->
+		</div>
+		<!--/row-->
+	</div>
+
+
+	<!-- Test markups -->
+	<div id="app">
+		{{ '........' }}
+	</div>
+	<!-- Test markups end -->
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="/js/script.js"></script>
+
+</body>
+
+</html>
