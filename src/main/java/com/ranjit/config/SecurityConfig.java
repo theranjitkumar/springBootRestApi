@@ -66,7 +66,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.logoutSuccessUrl("/login").permitAll();
 		
 		// uncomment to make rest api public
-		 http.authorizeRequests().antMatchers("/api/**").hasRole("USER").anyRequest().permitAll();
+		//  http.authorizeRequests().antMatchers("/api/**").hasRole("USER").anyRequest().permitAll();
 
 		// http.authorizeRequests().antMatchers("/h2-console/**").permitAll();
 
