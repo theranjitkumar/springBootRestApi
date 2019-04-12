@@ -55,6 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 		
 		http.authorizeRequests().antMatchers("/assets/**", "/api/**", "/h2-console/**").permitAll();
+		http.authorizeRequests().antMatchers("/","/about","/contactus").permitAll();
 
 		http
 			.authorizeRequests().antMatchers("/login").permitAll()
