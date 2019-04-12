@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="./">Blog</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"> <a class="nav-link" href="./">Posts</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="./about">About</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="./contactus">Contactus</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="./users">Users</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="./api/users">Users api</a> </li>
+                </ul>
+                <div class="form-inline">
+                    <a class="nav-link" href="./logout">Logout</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+
+                <h1> Posts Details:</h1>
+
+                <section>
+                    <h5> <span th:text="${post.id}"></span> <strong th:text="${post.title}"> </strong> </h5>
+                    <p th:text="${post.body}"> </p>
+                    <p> Posted By: <strong th:text="${post.userId}"> </strong> <a href="/">Back</a> </p>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

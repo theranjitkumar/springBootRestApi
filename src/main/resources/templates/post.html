@@ -39,34 +39,20 @@
 		<div class="row">
 			<div class="col">
 
-
 				<h1> Posts:</h1>
 
 				<section>
 					<div th:each="post:${posts}">
 						<h5> <span th:text="${post.id}"></span> <strong th:text="${post.title}"> </strong> </h5>
 						<p th:text="${post.body}"> </p>
-						<p> Posted By: <strong th:text="${post.userId}"> </strong> <a href="#"> View Post </a> </p>
+						<p> Posted By: <strong th:text="${post.userId}"> </strong> <a th:href="@{/post/{id}(id=${post.id})}"> View Post </a>
+						</p>
 					</div>
 				</section>
-
-				<!-- <div>
-					<table class="table">
-						<tr th:each="post:${posts}">
-							<td th:text="${post.id}"> </td>
-							<td th:text="${post.userId}"> </td>
-							<td th:text="${post.title}"> </td>
-							<td th:text="${post.body}"> </td>
-							<td> <a href="#"> view </a>  </td>
-						</tr>
-					</table>
-				</div> -->
 
 			</div>
 		</div>
 	</div>
-
-	<!-- <div th:insert="./fragments/footer :: copy">...</div> -->
 
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 

@@ -22,4 +22,8 @@ public class PostService {
 		return postRepo.findAll();
 	}
 
+	public Post postById(int id){
+		return postRepo.getOne(id);
+	}
+
 }
