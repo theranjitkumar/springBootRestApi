@@ -20,7 +20,7 @@ public class PostRestController {
 	private PostService postService;
 
 	@RequestMapping(value = "/posts", method = RequestMethod.POST)
-	public String addPosts(@RequestParam Long userId, @RequestParam String title, @RequestParam String body) {
+	public String addPosts(@RequestParam String userId, @RequestParam String title, @RequestParam String body) {
 
 		Post post = new Post();
 		post.setUserId(userId);

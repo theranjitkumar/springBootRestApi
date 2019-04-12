@@ -5,10 +5,10 @@ INSERT INTO USER VALUES(2, 'user@email.com','user','user');
 INSERT INTO USER VALUES(3, 'test@email.com','test','test');
 
 -- ==============insert users=============================
---INSERT INTO POST VALUES(1, 1 'First post title', 'nnostrum rerum est');
---INSERT INTO POST VALUES(2, 2 'First post title', 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto');
---INSERT INTO POST VALUES(3, 1 'Second post title', 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto');
---INSERT INTO POST VALUES(4, 1 'Test post title', 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto');
+INSERT INTO POST VALUES(1, 'first body content....', 'First post title', '1' );
+INSERT INTO POST VALUES(2, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi pariatur aliquid temporibus dignissimos eveniet odio laboriosam perferendis iste doloremque sapiente neque alias est ullam quos eius cum, accusantium sit non.', 'First post title', '2');
+INSERT INTO POST VALUES(3, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi pariatur aliquid temporibus dignissimos eveniet odio laboriosam perferendis iste doloremque sapiente neque alias est ullam quos eius cum, accusantium sit non.', 'Second post title', '1');
+INSERT INTO POST VALUES(4, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi pariatur aliquid temporibus dignissimos eveniet odio laboriosam perferendis iste doloremque sapiente neque alias est ullam quos eius cum, accusantium sit non.', 'Third post title', '2');
 
 -- Select Query:
 -- ===========================================
