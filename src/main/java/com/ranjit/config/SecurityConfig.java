@@ -66,7 +66,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.logout().invalidateHttpSession(true)
 			.clearAuthentication(true)
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-			.logoutSuccessUrl("/login").permitAll();
+			.logoutSuccessUrl("/").permitAll();
 		
 		// uncomment to make rest api public
 		//  http.authorizeRequests().antMatchers("/api/**").hasRole("USER").anyRequest().permitAll();

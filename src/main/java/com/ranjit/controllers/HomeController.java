@@ -11,11 +11,6 @@ public class HomeController {
 
 	String username;
 
-	// @GetMapping({"/"})
-	// public String home() {
-	// return "post";
-	// }
-
 	@GetMapping("/about")
 	public ModelAndView about(ModelAndView mv, Principal principal) {
 
@@ -27,16 +22,34 @@ public class HomeController {
 		} catch (NullPointerException e) {
 			System.out.print("NullPointerException Caught");
 		}
-		if(username !=null){
+		if (username != null) {
 			mv.addObject("username", username);
+		} else {
+			System.out.println("about "+username);
+			mv.addObject("username", "Stranger");
 		}
 		mv.setViewName("about");
 		return mv;
 	}
 
 	@GetMapping("/contactus")
-	public String contactus() {
-		return "contactus";
+	public ModelAndView contactus(ModelAndView mv, Principal principal) {
+		try {
+
+			username = principal.getName();
+			System.out.println(username);
+
+		} catch (NullPointerException e) {
+			System.out.print("NullPointerException Caught");
+		}
+		if (username != null) {
+			mv.addObject("username", username);
+		} else {
+			System.out.println("contactus "+username);
+			mv.addObject("username", "Stranger");
+		}
+		mv.setViewName("contactus");
+		return mv;
 	}
 
 	@GetMapping("/login")
@@ -45,7 +58,26 @@ public class HomeController {
 	}
 
 	@GetMapping("/logout")
-	public String logout() {
-		return "login";
+	public ModelAndView logout(ModelAndView mv, Principal principal) {
+		System.out.println("lout done");
+		try {
+
+			username = principal.getName();
+			System.out.println(username);
+
+		} catch (NullPointerException e) {
+			if (username != null) {
+				mv.addObject("username", "Stranger");
+			}
+			System.out.print("NullPointerException Caught");
+		}
+		if (username != null) {
+			mv.addObject("username", "Stranger");
+		} else {
+			System.out.println("logout "+username);
+			mv.addObject("username", "Stranger");
+		}
+		mv.setViewName("/");
+		return mv;
 	}
 }

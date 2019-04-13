@@ -1,5 +1,6 @@
 package com.ranjit.controllers;
 
+import java.security.Principal;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +17,34 @@ import com.ranjit.service.PostService;
 
 public class PostController {
 
+	String username;
+
 	@Autowired
 	private PostService postService;
 
+	public PostController() {
+
+	}
+
 	@RequestMapping(value = { "/", "/post" }, method = RequestMethod.GET)
-	public ModelAndView getPosts(ModelAndView mv) {
+	public ModelAndView getPosts(ModelAndView mv, Principal principal) {
+
+		try {
+			username = principal.getName();
+		} catch (NullPointerException e) {
+			System.out.print("NullPointerException Caught");
+		}
 
 		List<Post> posts = new ArrayList<>();
 		posts = postService.allPosts();
+
+		if (username != null) {
+			System.out.println("posts "+username);
+			mv.addObject("username", username);
+		} else {
+			System.out.println("posts "+username);
+			mv.addObject("username", "Stranger");
+		}
 
 		mv.addObject("posts", posts);
 		mv.setViewName("post");
