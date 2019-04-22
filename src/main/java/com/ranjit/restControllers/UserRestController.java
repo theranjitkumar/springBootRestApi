@@ -1,6 +1,8 @@
 package com.ranjit.restControllers;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -67,4 +69,29 @@ public class UserRestController {
 		return userService.getUser(id);
 	}
 
+	// DATA SORTING USING COMPARATOR
+	@RequestMapping("/users/sort")
+	public List<User> getSortedUsers(@RequestParam(required = false) String sortBy) {
+		List<User> users = new ArrayList<>();
+		users = userService.getAllUsers();
+		class SortBy implements Comparator<User>  {
+			public SortBy(){
+				System.out.println("hello");
+			}
+			@Override
+			public int compare(User arg0, User arg1) {
+				System.out.println("byeeee: ");
+				return arg0.getUsername().compareTo(arg1.getUsername());
+				// return arg0.getId().compareTo(arg1.getId());
+				// return arg0.getEmail().compareTo(arg1.getEmail());
+			}
+
+		};
+		Collections.sort(users, new SortBy());
+
+		System.out.println("SortBy: " + sortBy);
+
+		
+		return users;
+	}
 }
