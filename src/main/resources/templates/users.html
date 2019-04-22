@@ -50,6 +50,11 @@
 
 				<div>
 					<table class="table">
+						<thead>
+							<th>Email</th>
+							<th> User Name </th>
+							<th>Password</th>
+						</thead>
 						<tr th:each="user:${users}">
 							<td th:text="${user.email}"> </td>
 							<td th:text="${user.username}"> </td>
